@@ -1,0 +1,26 @@
+ 
+<div class="flex flex-cloumn">
+<div class="card">
+    <p-menubar [model]="items"></p-menubar>
+</div>
+
+<div>
+    <div class="col-12 mb-2 lg:col-4 lg:mb-0" style=" padding-top: 5rem;padding-left:27rem;">
+        <span class="p-input-icon-right">
+            <input type="text" pInputText placeholder="Search"/>
+            <i class="pi pi-search"></i>
+        </span>
+    </div>
+    <div class="pt-01;" style=" padding-top: 1rem;padding-left:32rem;">
+        <p-button label="Register" (click)="savedData = null" (click)="overlay.toggle($event)"></p-button>
+    </div>
+</div>
+<div>
+    <p-overlayPanel #overlay>
+   <app-user-profile (userData)="userDataGet($event)"></app-user-profile>
+</p-overlayPanel>
+</div>
+<div *ngIf="savedData != null">
+    <app-user-details [savedData]="savedData"></app-user-details>
+</div>
+</div>

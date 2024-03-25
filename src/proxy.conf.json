@@ -1,0 +1,7 @@
+{
+    "/*": {
+      "target": "https://ca31cc80712c7d2f726b.free.beeceptor.com",
+      "secure": false,
+      "logLevel": "debug"
+    }
+  }

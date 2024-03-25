@@ -1,0 +1,20 @@
+.users{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.users .nameFields{
+    display: flex;
+    gap:1rem
+}
+.users .email .p-inputtext{
+    width:31.5rem;
+}
+
+.users .location{
+    display: flex;
+    gap: 1rem;
+}
+.location .p-dropdown{
+    width: 31.5rem;;
+}
