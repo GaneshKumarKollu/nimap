@@ -1,44 +1,53 @@
-
-
-<form [formGroup]="userForm">
-    <div class="users">
-    <div class="nameFields" >
-        <input pInputText id="firstName" placeholder="FirstName" type="text" formControlName="firstName">
-        <input pInputText id="LastName" placeholder="LastName" type="text" formControlName="lastName">
+<form [formGroup]="userForm" class="users">
+    <div class="left-side">
+        <img *ngIf="selectedImage" [src]="selectedImage" alt="Uploaded Image" width="100px">
+        <input type="file" id="photo" (change)="onFileSelected($event)">
     </div>
-    <div class="email">
-        <input pInputText id="email" placeholder="Email" type="email" formControlName="email">
-    </div>
-    <div class="PhoneNumber">
-        <input pInputText id="PhoneNumber" placeholder="PhoneNumber" type="text" formControlName="PhoneNumber">
-    </div>
-    <div>
-        <input pInputText="Age" placeholder="Age"   type="Number" formControlName="ageSlider"/>
-       
-    </div>
-    <div class="location">
-        <p-dropdown formControlName="selectedState" [options]="states" optionLabel="name" optionValue="name" placeholder="Select a State"></p-dropdown>
-        <p-dropdown formControlName="selectedCountry" [options]="country" optionLabel="name"   optionValue="name" placeholder="Select a Country"></p-dropdown>
-    </div>
-    <div class="location">
-        <p-dropdown formControlName="addressType" [options]="addressType" optionLabel="name"  optionValue="name" placeholder="Select a type"></p-dropdown>
-    </div>
-    <div class="nameFields" >
-        <input pInputText id="address1" placeholder="address1" type="text" formControlName="address1">
-        <input pInputText id="address2" placeholder="address2" type="text" formControlName="address2">
-    </div>
-    <div>
-        <p-multiSelect [options]="hobbies" optionValue="name" formControlName="tags" placeholder="Select your hobbies" optionLabel="name" class="multiselect-custom" display="chip">
-            <ng-template let-hobbies pTemplate="item">
-                <div class="flex align-items-center">
-                    <span class="ml-2">{{hobbies.name}}</span>
-                </div>
-            </ng-template>
-        </p-multiSelect>
-    </div>
-    <div class="nameFields">
-        <p-button label="Cancel" severity="secondary" (click)="getData()"></p-button>
-        <button pButton pRipple label="Submit" class="p-button-success" (click)="createUser()"></button>
-    </div>
+    <div class="right-side">
+        <div class="nameFields">
+            <input pInputText id="firstName" placeholder="FirstName" type="text" formControlName="firstName">
+            <input pInputText id="LastName" placeholder="LastName" type="text" formControlName="lastName">
+        </div>
+        <div class="email">
+            <input pInputText id="email" placeholder="Email" type="email" formControlName="email">
+        </div>
+        <div class="PhoneNumber">
+            <input pInputText id="PhoneNumber" placeholder="PhoneNumber" type="text" formControlName="phoneNumber">
+        </div>
+        <div class="Age">
+            <label for="ageSlider">Age:</label>
+            <p-slider id="ageSlider" formControlName="ageSlider" [min]="20" [max]="60" [step]="1"></p-slider>
+        </div>
+        
+        
+        <div class="location">
+            <p-dropdown formControlName="selectedState" [options]="states" optionLabel="name" optionValue="name"
+                placeholder="Select a State"></p-dropdown>
+            <p-dropdown formControlName="selectedCountry" [options]="country" optionLabel="name" optionValue="name"
+                placeholder="Select a Country"></p-dropdown>
+        </div>
+        <div class="location">
+            <p-dropdown formControlName="addressType" [options]="addressType" optionLabel="name" optionValue="name"
+                placeholder="Select a type"></p-dropdown>
+        </div>
+        <div class="nameFields">
+            <input pInputText id="address1" placeholder="address1" type="text" formControlName="address1">
+            <input pInputText id="address2" placeholder="address2" type="text" formControlName="address2">
+        </div>
+        <div>
+            <p-multiSelect [options]="hobbies" optionValue="name" formControlName="tags" placeholder="Select your hobbies"
+                optionLabel="name" class="multiselect-custom" display="chip">
+                <ng-template let-hobbies pTemplate="item">
+                    <div class="flex align-items-center">
+                        <span class="ml-2">{{hobbies.name}}</span>
+                    </div>
+                </ng-template>
+            </p-multiSelect>
+        </div>
+        <div class="nameFields">
+            <p-button label="Cancel" severity="secondary" (click)="getData()"></p-button>
+            <button pButton pRipple label="Submit" class="p-button-success" (click)="createUser()"
+                [disabled]="userForm.invalid"></button>
+        </div>
     </div>
 </form>

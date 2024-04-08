@@ -1,0 +1,59 @@
+.flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.input-container input[type="text"] {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.search-button {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.options-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 41px;
+}
+
+.checkbox-container,
+.dropdown-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    margin-right: 189px;
+}
+
+.checkbox-container label,
+.dropdown-container label {
+    margin-right: 105px;
+}
+
+#location-dropdown {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+.register-button-container {
+    padding-top: 34px;
+    padding-left: 36rem;
+}
+
+.p-button {
+    background-color: blue;
+    color: white;
+}

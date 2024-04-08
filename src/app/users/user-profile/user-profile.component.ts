@@ -31,6 +31,7 @@ interface Type {
 export class UserProfileComponent  {
 @Output() userData =new EventEmitter<any>; 
   userForm : FormGroup;
+  selectedImage: string = "https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg";
   value: number = 50;
   states: States[] | undefined;
   country: Country[] | undefined;
@@ -75,49 +76,53 @@ this.addressType=[
 ]
 }
 
-  getUserFormAttributes() {
-    return {
-        firstName: new FormControl(null, [
-          Validators.required,
-          
-        ]),
-        lastName: new FormControl(null, [
-          Validators.required,
-        ]),
-        email: new FormControl(null, [
-          
-        ]),
-        phoneNumber:new FormControl(null, [
-          
-        ]),
-        ageSlider:new FormControl(null, [
-          
-        ]),
-        selectedState:new FormControl(null, [
-          
-        ]),
-        selectedCountry:new FormControl(null, [
-          
-        ]),
-        addressType:new FormControl(null, [
-          
-        ]),
-        address1:new FormControl(null, [
-          
-        ]),
-        address2:new FormControl(null, [
-          
-        ]),
-        tags:new FormControl(null, [
-          
-        ]),
-        };
-    }
+getUserFormAttributes() {
+  return {
+    firstName: new FormControl(null, [
+      Validators.required,
+      Validators.maxLength(50) // Example: Maximum length of 50 characters
+    ]),
+    lastName: new FormControl(null, [
+      Validators.required,
+      Validators.maxLength(50)
+    ]),
+    email: new FormControl(null, [
+      Validators.required,
+      Validators.email // Validate email format
+    ]),
+    phoneNumber: new FormControl(null, [
+      Validators.pattern("^[0-9]*$"), // Only digits allowed
+      Validators.minLength(10), // Example: Minimum length of 10 digits
+      Validators.maxLength(15) // Example: Maximum length of 15 digits
+    ]),
+    ageSlider: new FormControl(null, [
+      Validators.required,
+      Validators.min(20), // Example: Minimum age of 18
+      Validators.max(60) // Example: Maximum age of 100
+    ]),
+    selectedState: new FormControl(null, [
+      Validators.required
+    ]),
+    selectedCountry: new FormControl(null, [
+      Validators.required
+    ]),
+    addressType: new FormControl(null, [
+      Validators.required
+    ]),
+    address1: new FormControl(null, [
+      Validators.required
+    ]),
+    address2: new FormControl(null),
+    tags: new FormControl(null, [
+      Validators.required
+    ]),
+  };
+}
 
 createUser(){
   console.log(this.selectedMulti)
     let requestBody={
-      photo: "",
+      photo: "this.userForm.get('selectedImage')?.value",
       firstName : this.userForm.get('firstName')?.value,
       lastName: this.userForm.get('lastName')?.value,
       email : this.userForm.get('email')?.value,
@@ -142,12 +147,24 @@ createUser(){
 this.storeUserData.push(requestBody);
 console.log(this.storeUserData);
 this.userData.emit(requestBody);
+this.userService.postData(requestBody).subscribe({
+  next: (response) => {
+    console.log(response);
+    this.storeUserData.push(response); 
+    this.userData.emit(response); 
+  },
+  error: (error) => {
+    console.log(error);
+  }
+});
 
   }
 
 
   getData(){
     this.userForm.reset();
+    this.selectedImage = "https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg";
+    this.userData.emit(null);
     this.userService.getData().subscribe({
       next:(response)=>{
         console.log(response);
@@ -156,4 +173,26 @@ this.userData.emit(requestBody);
       }
     })
   }
+
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        const img = new Image();
+        img.onload = () => {
+          if (img.width <= 310 && img.height <= 325) {
+            this.selectedImage = reader.result as string;
+          } else {
+            alert("Image dimensions should be 310x325 pixels or less.");
+            // Reset the input field if image dimensions are invalid
+            event.target.value = '';
+          }
+        };
+        img.src = reader.result as string;
+      };
+    }
+  }
+  
 }

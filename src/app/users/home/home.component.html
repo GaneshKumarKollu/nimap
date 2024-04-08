@@ -1,26 +1,53 @@
- 
-<div class="flex flex-cloumn">
-<div class="card">
-    <p-menubar [model]="items"></p-menubar>
-</div>
-
-<div>
-    <div class="col-12 mb-2 lg:col-4 lg:mb-0" style=" padding-top: 5rem;padding-left:27rem;">
-        <span class="p-input-icon-right">
-            <input type="text" pInputText placeholder="Search"/>
-            <i class="pi pi-search"></i>
-        </span>
+<div class="flex flex-column">
+    <div class="card">
+        <p-menubar [model]="items"></p-menubar>
     </div>
-    <div class="pt-01;" style=" padding-top: 1rem;padding-left:32rem;">
+    <h2>I'm looking for..</h2>
+    <div class="search-section">
+        <form action="#" class="input-container">
+            <input type="text" pInputText placeholder="Enter a Job Description" />
+            <!-- Search Button -->
+            <button type="submit" class="search-button">
+                <i class="pi pi-search"></i> Search
+            </button>
+        </form>
+        <div class="options-container">
+            <!-- Checkboxes -->
+            <div class="checkbox-container">
+                <label for="full-time-checkbox">
+                    <input type="checkbox" id="full-time-checkbox">
+                    Full Time
+                </label>
+                <label for="part-time-checkbox">
+                    <input type="checkbox" id="part-time-checkbox">
+                    Part Time / cascual/ Freelance
+                </label>
+            </div>
+            <div class="dropdown-container">
+                <label for="location-dropdown"></label>
+                <select id="location-dropdown">
+                    <option value="" disabled selected>Select Location</option>
+                    <option value="location1">Location 1</option>
+                    <option value="location2">Location 2</option>
+                    <option value="location3">Location 3</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Button -->
+    <div class="register-button-container">
+        
         <p-button label="Register" (click)="savedData = null" (click)="overlay.toggle($event)"></p-button>
     </div>
-</div>
-<div>
-    <p-overlayPanel #overlay>
-   <app-user-profile (userData)="userDataGet($event)"></app-user-profile>
-</p-overlayPanel>
-</div>
-<div *ngIf="savedData != null">
-    <app-user-details [savedData]="savedData"></app-user-details>
-</div>
+
+    <div>
+        <p-overlayPanel #overlay>
+            <app-user-profile (userData)="userDataGet($event)"></app-user-profile>
+        </p-overlayPanel>
+    </div>
+
+    <div *ngIf="savedData!= null">
+        <app-user-details [savedData]="savedData"></app-user-details>
+    </div>
 </div>

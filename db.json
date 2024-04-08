@@ -1,0 +1,108 @@
+{
+  "users": [
+ 
+ 
+    {
+      "id": "f4f4",
+      "photo": "this.userForm.get('selectedImage')?.value",
+      "firstName": "nani",
+      "lastName": "Kollu",
+      "email": "neshkumarkollu227@gmail.com",
+      "age": 24,
+      "phoneNo": "07095906778",
+      "addressType": "Home",
+      "state": "Goa",
+      "country": "India",
+      "adderssFirst": "8/3 Ramapuram v, post, Duvvur mandal , Kadapa dist",
+      "adderssSecond": "Duvvur mandal , Kadapa district",
+      "tags": [
+        "Hockey"
+      ]
+    },
+    {
+      "id": "d299",
+      "photo": "this.userForm.get('selectedImage')?.value",
+      "firstName": "test",
+      "lastName": "test",
+      "email": "tes@ga.com",
+      "age": 21,
+      "phoneNo": "12345678990",
+      "addressType": "Company",
+      "state": "Andhra Pradesh",
+      "country": "India",
+      "adderssFirst": "12345",
+      "adderssSecond": "2345",
+      "tags": [
+        "Hockey"
+      ]
+    },
+    {
+      "id": "ba86",
+      "photo": "this.userForm.get('selectedImage')?.value",
+      "firstName": "Ganesh",
+      "lastName": "Kollu",
+      "email": "ganeshkumarkollu227@gmail.com",
+      "age": 23,
+      "phoneNo": "07095906419",
+      "addressType": "Company",
+      "state": "Karnataka",
+      "country": "Oman",
+      "adderssFirst": "8/3 Ramapuram v, post, Duvvur mandal , Kadapa dist",
+      "adderssSecond": "Duvvur mandal , Kadapa district",
+      "tags": [
+        "Hockey"
+      ]
+    },
+    {
+      "id": "86ec",
+      "photo": "this.userForm.get('selectedImage')?.value",
+      "firstName": "Ganesh Kumar",
+      "lastName": "Kollu",
+      "email": "ganeshkumarkollu227@gmail.com",
+      "age": 20,
+      "phoneNo": "7010051488",
+      "addressType": "Home",
+      "state": "Andhra Pradesh",
+      "country": "India",
+      "adderssFirst": "8/3 Ramapuram v, post, Duvvur mandal , Kadapa dist",
+      "adderssSecond": "Duvvur mandal , Kadapa district",
+      "tags": [
+        "Hockey"
+      ]
+    },
+    {
+      "id": "836c",
+      "photo": "this.userForm.get('selectedImage')?.value",
+      "firstName": "Ganesh Kumar",
+      "lastName": "Kollu",
+      "email": "ganeshkumarkollu227@gmail.com",
+      "age": 20,
+      "phoneNo": "7010051488",
+      "addressType": "Home",
+      "state": "Andhra Pradesh",
+      "country": "India",
+      "adderssFirst": "8/3 Ramapuram v, post, Duvvur mandal , Kadapa dist",
+      "adderssSecond": "Duvvur mandal , Kadapa district",
+      "tags": [
+        "Hockey"
+      ]
+    },
+    {
+      "id": "bdfa",
+      "photo": "this.userForm.get('selectedImage')?.value",
+      "firstName": "Ganesh",
+      "lastName": "Kollu",
+      "email": "ganeshkumarkollu227@gmail.com",
+      "age": 22,
+      "phoneNo": "07095906419",
+      "addressType": "Home",
+      "state": "Andhra Pradesh",
+      "country": "India",
+      "adderssFirst": "8/3 Ramapuram v, post, Duvvur mandal , Kadapa dist",
+      "adderssSecond": "Duvvur mandal , Kadapa district",
+      "tags": [
+        "Kabaddi"
+      ]
+    }
+  ]
+}

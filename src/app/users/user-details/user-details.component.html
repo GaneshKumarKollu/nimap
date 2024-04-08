@@ -1,5 +1,29 @@
-
-<p> I am {{savedData?.firstName}} {{savedData?.lastName}} and Im above {{savedData?.age}} years and<br>
-     you can send your email to  <br> {{savedData?.email}}.
-    I live in the state of <br>{{savedData?.state}}.I like to play {{savedData?.tags[0]}}.<br>
-     And please send me newsletters.Please<br> reach out to me on my phone number {{savedData?.phoneNo}}</p>
+<div class="profile">
+     <div class="left-side">
+         <h2>Profile</h2>
+         <button class="yellow-button" (click)="toggleEditMode()">Edit Profile</button>
+         <button class="yellow-button" (click)="changePhoto()">Edit Photo</button>
+         <input type="file" style="display: none" accept="image/*" #fileInput (change)="handleFileInput($event)">
+     </div>
+     <div class="right-side">
+         <ng-container *ngIf="!editMode; else editModeTemplate">
+             <p>I'm {{savedData?.firstName}} {{savedData?.lastName}} and I'm above {{savedData?.age}} years.</p>
+             <p>You can send your emails to <a href="{{savedData?.email}}">{{savedData?.email}}</a>.</p>
+             <p>I live in the state of {{savedData?.state}}.</p>
+             <p>I like to play {{savedData?.tags[0]}}.</p>
+             <p>Please send me newsletters. Please reach out to me on my phone number {{savedData?.phoneNo}}.</p>
+         </ng-container>
+         <ng-template #editModeTemplate>
+             <input type="text" [(ngModel)]="savedData.firstName" placeholder="First Name"><br>
+             <input type="text" [(ngModel)]="savedData.lastName" placeholder="Last Name"><br>
+             <input type="number" [(ngModel)]="savedData.age" placeholder="Age"><br>
+             <input type="email" [(ngModel)]="savedData.email" placeholder="Email"><br>
+             <input type="text" [(ngModel)]="savedData.state" placeholder="State"><br>
+             <input type="text" [(ngModel)]="savedData.tags[0]" placeholder="Favorite activity"><br>
+             <input type="text" [(ngModel)]="savedData.phoneNo" placeholder="Phone Number"><br>
+         </ng-template>
+         <button class="green-button small-button">I Agree</button>
+         <button class="green-button small-button" *ngIf="editMode" (click)="saveChanges()">Save Changes</button>
+     </div>
+ </div>
+ 
